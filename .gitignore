@@ -1,0 +1,9 @@
+node_modules/
+.env
+uploads/
+logs/
+.DS_Store
+npm-debug.log*
+dist/
+frontend/prep-ai/node_modules/
+backend/prep-ai/node_modules/
