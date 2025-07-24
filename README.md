@@ -1,4 +1,4 @@
-#PrepWise-AI
+PrepWise-AI
 
 PrepWise-AI is a modern, AI-powered interview preparation platform designed to help users practice, track, and improve their interview skills. With a sleek interface, smart session management, and AI-generated questions, PrepWise-AI is your all-in-one solution for acing interviews.
 
@@ -9,22 +9,20 @@ PrepWise-AI is a modern, AI-powered interview preparation platform designed to h
 - 🔒 **User Authentication:** Secure sign up and login
 - 📝 **Interview Sessions:** Create, manage, and review interview sessions
 - 🤖 **AI-Generated Questions:** Get dynamic, role-specific questions and explanations
-- 📊 **Dashboard:** Visualize your progress with summary cards and analytics
-- 👤 **Profile Management:** Update your info and upload profile photos
-- 📂 **File Uploads:** Attach images and documents to your sessions
+- 📊 **Dashboard:** Visualize your progress with summary cards
 - ⚡ **Fast & Responsive:** Built with Vite and React for a smooth experience
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Layer      | Technology                |
-|------------|---------------------------|
-| Frontend   | React, Vite, JavaScript, CSS |
-| Backend    | Node.js, Express.js       |
-| Database   | MongoDB                   |
-| AI         | Gemini AI (or OpenAI API) |
-| Deployment | Vercel (frontend),Render (backend) |
+| Layer      | Technology                           |
+|------------|--------------------------------------|
+| Frontend   | React, Vite, JavaScript, TailwindCSS |
+| Backend    | Node.js, Express.js                  |
+| Database   | MongoDB                              |
+| AI         | Gemini AI                            |
+| Deployment | Vercel (frontend),Render (backend)   |
 
 ---
 
