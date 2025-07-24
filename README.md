@@ -1,4 +1,4 @@
-PrepWise-AI
+# PrepWise-AI
 
 PrepWise-AI is a modern, AI-powered interview preparation platform designed to help users practice, track, and improve their interview skills. With a sleek interface, smart session management, and AI-generated questions, PrepWise-AI is your all-in-one solution for acing interviews.
 
@@ -75,7 +75,7 @@ npm install
 npm run dev
 ```
 
---
+---
 
 ## 🤝 Contributing
 
