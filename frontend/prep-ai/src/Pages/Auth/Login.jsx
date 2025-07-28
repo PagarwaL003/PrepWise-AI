@@ -14,7 +14,7 @@ const Login = ({ setCurrentPage }) => {
 
   const navigate = useNavigate();
   const { updateUser } = useContext(UserContext);
-  
+
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -31,10 +31,16 @@ const Login = ({ setCurrentPage }) => {
 
     // api call
     try {
-      const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN, {
-        email,
-        password,
-      });
+      const response = await axiosInstance.post(
+        API_PATHS.AUTH.LOGIN,
+        {
+          email,
+          password,
+        },
+        {
+          withCredentials: true,
+        }
+      );
 
       const { token } = response.data;
       if (token) {
