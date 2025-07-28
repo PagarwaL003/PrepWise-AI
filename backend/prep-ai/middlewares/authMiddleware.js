@@ -1,4 +1,4 @@
-const User = require("../prep-ai/models/User");
+const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 
 const protect = async (req, res, next) => {
