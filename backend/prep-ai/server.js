@@ -12,24 +12,24 @@ const { generateInterviewQuestions, generateConceptExplanation } = require("./co
 const serverless = require("serverless-http");
 
 const app = express();
-// middleware to handle cors
-const allowedOrigin = [
-  process.env.FRONTEND_URL,
-  "http://localhost:5173",
-  "http://localhost:3000",
-];
-
+// const allowedOrigin = [
+  //   process.env.FRONTEND_URL,
+  //   "http://localhost:5173",
+  //   "http://localhost:3000",
+  // ];
+  
+  // middleware to handle cors
 app.use(
   cors({
-    origin: (origin, callback) => {
-      if (!origin) return callback(null, true);
-      if (allowedOrigin.includes(origin)) return callback(null, true);
-      return callback(new Error("Not allowed by CORS"));
-    },
+    origin: ["http://localhost:5173", "https://prepwise-a.vercel.app"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
 );
 
+// connect to the database
+connectDB();
 
 // middlewares to handle json
 app.use(express.json());
@@ -44,17 +44,15 @@ app.use("/api/v1/ai/generate-explanation" , protect , generateConceptExplanation
 // serve uploads folder
 app.use("/uploads", express.static(path.join(__dirname, "uploads"), {}));
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
-
-// connect to the database
-connectDB();
-
 
 // const PORT = process.env.PORT || 3000;
 // app.listen(PORT, () => {
 //   console.log("✅ Server is running on port " + PORT);
 // });
 
-export default app;
+app.get("/", (req, res) => {
+  res.send("PrepWise API is live!");
+});
+
+// ✅ Export as serverless function
+module.exports = serverless(app);
