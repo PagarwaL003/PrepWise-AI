@@ -32,7 +32,8 @@ axiosInstance.interceptors.response.use(
   (error) => {
     if (error.response) {
       if (error.response.status === 401) {
-        window.location.href = "/";
+        localStorage.removeItem("token");
+        console.log("Unauthorized access. Please log in again.");
       } else if (error.response.status === 500) {
         console.log("Server error. Please try again later.");
       }

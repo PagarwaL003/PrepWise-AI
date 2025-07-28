@@ -22,6 +22,7 @@ const UserProvider = ({ children }) => {
         const response = await axiosInstance.get(API_PATHS.AUTH.GET_PROFILE);
         setUser(response.data);
       } catch (error) {
+        localStorage.removeItem("token");
         console.error("User not authenticated ", error);
       } finally {
         setLoading(false);
