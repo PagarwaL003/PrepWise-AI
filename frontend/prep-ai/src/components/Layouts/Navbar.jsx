@@ -7,7 +7,7 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between gap-5">
         <Link to="/dashboard">
           <h2 className="text-xl md:text-2xl font-semibold text-black leading-5">
-            Interview Prep AI
+            PrepWise
           </h2>
         </Link>
         <ProfileInfoCard />
