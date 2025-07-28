@@ -21,7 +21,7 @@ const app = express();
   // middleware to handle cors
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://prepwise-a.vercel.app"],
+    origin: ["https://prepwise-a.vercel.app"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
