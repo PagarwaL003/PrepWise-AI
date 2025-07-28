@@ -9,20 +9,27 @@ const sessionRoutes = require("./routes/sessionRoutes")
 const questionRoutes = require("./routes/questionRoutes");
 const { protect } = require("./middlewares/authMiddleware");
 const { generateInterviewQuestions, generateConceptExplanation } = require("./controllers/aiController");
+const serverless = require("serverless-http");
 
 const app = express();
 // middleware to handle cors
+const allowedOrigin = [
+  process.env.FRONTEND_URL,
+  "http://localhost:5173",
+  "http://localhost:3000",
+];
+
 app.use(
   cors({
-    origin: "http://localhost:5173", // Adjust this to your frontend URL
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true, // Allow cookies to be sent
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+      if (allowedOrigin.includes(origin)) return callback(null, true);
+      return callback(new Error("Not allowed by CORS"));
+    },
+    credentials: true,
   })
 );
 
-// connect to the database
-connectDB();
 
 // middlewares to handle json
 app.use(express.json());
@@ -37,8 +44,17 @@ app.use("/api/v1/ai/generate-explanation" , protect , generateConceptExplanation
 // serve uploads folder
 app.use("/uploads", express.static(path.join(__dirname, "uploads"), {}));
 
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-  console.log("✅ Server is running on port " + PORT);
+app.get("/", (req, res) => {
+  res.send("Hello World");
 });
+
+// connect to the database
+connectDB();
+
+
+// const PORT = process.env.PORT || 3000;
+// app.listen(PORT, () => {
+//   console.log("✅ Server is running on port " + PORT);
+// });
+
+export default app;
